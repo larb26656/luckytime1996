@@ -1,0 +1,64 @@
+---
+import { getAllPosts } from "@/lib/repo/post.repo";
+import PostList from "@/components/post/PostList.astro";
+import Typo from "@/components/Typo.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { buildPaginationParams } from "@/lib/utils/pagination";
+import Pagination from "@/components/Pagination.astro";
+import FortuneCookie from "@/components/FortuneCookie";
+import { PAGE_SIZE } from "@/consts";
+import FreeStyleLayout from "@/layouts/FreeStyleLayout.astro";
+import NavigationBar from "@/components/navigation-bar/NavigationBar.astro";
+import Footer from "@/components/Footer.astro";
+import MeFloat from "@/components/MeFloat.astro";
+
+const allPosts = await getAllPosts({});
+
+const pageSize = PAGE_SIZE;
+const pageParams = buildPaginationParams(allPosts, pageSize);
+const {
+  props: { items, previousPage, nextPage },
+} = pageParams[0];
+---
+
+<FreeStyleLayout title="Home">
+  <!-- hot fix  -->
+  <style>
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+  <NavigationBar />
+  <section class="min-h-screen">
+    <div class="p-4 md:p-16">
+      <div class="main-container">
+        <div class="grid grid-cols-1 md:grid-cols-10 gap-4">
+          <div class="md:col-span-7">
+            <h1
+              class="text-primary font-bold font-primary text-[32px] md:text-[40px] mb-3"
+            >
+              I’m Luckytime1996
+            </h1>
+            <Typo variant="normal">
+              A Full Stack Developer who loves exploring new projects,
+              technologies, and programming techniques, believing that
+              well-crafted software can solve problems and create value for
+              people.
+            </Typo>
+          </div>
+          <div class="md:col-span-3 flex justify-center items-center">
+            <MeFloat />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Footer />
+  <Typo variant="h2" color="primary">> New</Typo>
+</FreeStyleLayout>

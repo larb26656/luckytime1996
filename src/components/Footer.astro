@@ -1,0 +1,27 @@
+---
+import Typo from "@/components/Typo.astro";
+
+const today = new Date();
+---
+
+<footer class="py-15 px-4 bg-secondary">
+  <div class="flex flex-col gap-2 justify-between items-center">
+    <Typo variant="small" color="light" class="text-center"
+      >Copyright &copy; {today.getFullYear()} Luckytime1996. All rights reserved.</Typo
+    >
+
+    <div class="flex gap-2 justify-center">
+      <a
+        href="https://webring.wonderful.software#blog.luckytime1996.dev"
+        title="วงแหวนเว็บ"
+      >
+        <img
+          alt="วงแหวนเว็บ"
+          width="32"
+          height="32"
+          src="https://webring.wonderful.software/webring.white.svg"
+        />
+      </a>
+    </div>
+  </div>
+</footer>

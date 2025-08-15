@@ -1,0 +1,87 @@
+.markdown {
+  h1 {
+    @apply font-primary font-semibold text-primary text-2xl mb-4 mt-16;
+  }
+
+  h2 {
+    @apply font-primary font-semibold text-primary text-xl mb-4 mt-16;
+  }
+
+  h3 {
+    @apply font-primary font-semibold text-secondary text-lg mb-4 mt-10;
+  }
+
+  p {
+    @apply text-dark font-content text-md/loose mb-4;
+  }
+
+  p > img {
+    @apply mx-auto;
+  }
+
+  p > svg[id^="mermaid-"] {
+    @apply mx-auto;
+    line-height: 1 !important;
+    font-size: 1em !important;
+    font-family: inherit !important;
+  }
+
+  p > svg[id^="mermaid-"] {
+    p {
+      all: unset;
+      line-height: normal;
+      font-size: 1em;
+      font-family: inherit;
+    }
+  }
+
+  p > em {
+    display: block;
+    text-align: center;
+    @apply p-4 text-sm text-gray-500;
+  }
+
+  a {
+    @apply text-primary underline hover:no-underline hover:text-secondary;
+  }
+
+  pre {
+    @apply bg-secondary text-light p-4 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed my-4;
+
+    code {
+      @apply bg-transparent;
+    }
+  }
+
+  code {
+    @apply bg-gray-200 px-1 py-0.5 rounded;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-left: 1.5em;
+    @apply mb-4;
+  }
+
+  ul {
+    list-style-type: circle;
+    padding-left: 1em;
+    @apply mb-4;
+  }
+
+  li {
+    @apply text-dark font-content text-md/loose;
+  }
+
+  blockquote {
+    @apply m-4 p-4 pl-6 border-l-4 border-gray-300 bg-gray-100 italic text-gray-700;
+
+    p {
+      @apply mb-0;
+    }
+  }
+
+  hr {
+    @apply border-0 border-t-2 border-dotted border-gray-400 my-12;
+  }
+}
