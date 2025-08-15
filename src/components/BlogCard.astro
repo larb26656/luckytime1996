@@ -1,0 +1,73 @@
+---
+import Typo from "./Typo.astro";
+import Badge from "./Badge.astro";
+
+interface Props {
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+  image?: string;
+  slug: string;
+}
+
+const {
+  title,
+  excerpt,
+  author,
+  date,
+  readTime,
+  tags = [],
+  image,
+  slug,
+} = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<article
+  class="border border-tertiary rounded-md p-4 flex flex-col h-full transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+>
+  {
+    image && (
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-[150px] object-cover rounded-md mb-3"
+        loading="lazy"
+      />
+    )
+  }
+
+  <div class="flex items-center text-xs text-gray-500 mb-2">
+    <span>{formattedDate}</span>
+    <span class="mx-2">•</span>
+    <span>{readTime}</span>
+  </div>
+
+  <Typo variant="h3" color="primary" class="mb-2">
+    <a href={`/blog/${slug}`} class="hover:underline">
+      {title}
+    </a>
+  </Typo>
+
+  <Typo variant="normal" color="dark" class="mb-3 flex-grow">
+    {excerpt}
+  </Typo>
+
+  {
+    tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-auto pt-2">
+        {tags.map((tag) => (
+          <Badge>{tag}</Badge>
+        ))}
+      </div>
+    )
+  }
+</article>

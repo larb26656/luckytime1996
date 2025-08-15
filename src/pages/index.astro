@@ -1,43 +1,25 @@
 ---
 import { getAllPosts } from "@/lib/repo/post.repo";
-import PostList from "@/components/post/PostList.astro";
 import Typo from "@/components/Typo.astro";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { buildPaginationParams } from "@/lib/utils/pagination";
-import Pagination from "@/components/Pagination.astro";
-import FortuneCookie from "@/components/FortuneCookie";
 import { PAGE_SIZE } from "@/consts";
 import FreeStyleLayout from "@/layouts/FreeStyleLayout.astro";
 import NavigationBar from "@/components/navigation-bar/NavigationBar.astro";
 import Footer from "@/components/Footer.astro";
 import MeFloat from "@/components/MeFloat.astro";
-
-const allPosts = await getAllPosts({});
-
-const pageSize = PAGE_SIZE;
-const pageParams = buildPaginationParams(allPosts, pageSize);
-const {
-  props: { items, previousPage, nextPage },
-} = pageParams[0];
+import TechStackTable from "@/components/TechStackTable.astro";
+import { techStacks } from "@/data/techStacks";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { projects } from "@/data/projects";
+import { blogPosts } from "@/data/blogPosts";
+import BlogCard from "@/components/BlogCard.astro";
 ---
 
 <FreeStyleLayout title="Home">
-  <!-- hot fix  -->
-  <style>
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-  </style>
   <NavigationBar />
   <section class="min-h-screen">
-    <div class="p-4 md:p-16">
-      <div class="main-container">
+    {/* Hero section */}
+    <div class="bg-gray-200">
+      <div class="main-container py-8 md:py-32 px-4">
         <div class="grid grid-cols-1 md:grid-cols-10 gap-4">
           <div class="md:col-span-7">
             <h1
@@ -58,7 +40,44 @@ const {
         </div>
       </div>
     </div>
+
+    <!-- Tech Stack Section -->
+    <div class="bg-white">
+      <div class="main-container py-12 md:py-20 px-4">
+        <Typo variant="h2" color="primary" class="mb-8">Tech stack</Typo>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {
+            techStacks.map((stack) => (
+              <TechStackTable
+                class="col-span-1"
+                title={stack.title}
+                items={stack.items}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="bg-gray-50">
+      <div class="main-container py-12 md:py-20 px-4">
+        <Typo variant="h2" color="primary" class="mb-8">Featured Projects</Typo>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {projects.map((project) => <ProjectCard {...project} />)}
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Section -->
+    <div class="bg-white">
+      <div class="main-container py-12 md:py-20 px-4">
+        <Typo variant="h2" color="primary" class="mb-8">Latest Articles</Typo>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {blogPosts.map((post) => <BlogCard {...post} />)}
+        </div>
+      </div>
+    </div>
+    <Footer />
   </section>
-  <Footer />
-  <Typo variant="h2" color="primary">> New</Typo>
 </FreeStyleLayout>

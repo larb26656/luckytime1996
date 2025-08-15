@@ -1,0 +1,36 @@
+---
+import Typo from "./Typo.astro";
+import Badge from "./Badge.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+}
+
+const { title, description, image, tags = [] } = Astro.props;
+---
+
+<article
+  class="project-card border border-tertiary rounded-md p-4 flex flex-col h-full transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+>
+  <img
+    src={image}
+    alt={title}
+    class="w-full h-[150px] object-cover rounded-md mb-3"
+    loading="lazy"
+  />
+  <Typo variant="h3" color="primary" class="mb-2">{title}</Typo>
+  <Typo variant="normal" color="dark" class="mb-3 flex-grow">{description}</Typo
+  >
+  {
+    tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-auto pt-2">
+        {tags.map((tag) => (
+          <Badge>{tag}</Badge>
+        ))}
+      </div>
+    )
+  }
+</article>
