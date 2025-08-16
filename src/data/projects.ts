@@ -1,33 +1,37 @@
 export interface Project {
   title: string;
+  link?: string;
   description: string;
-  image: string;
   tags: string[];
 }
 
 export const projects: Project[] = [
   {
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce platform with user authentication, product catalog, and payment integration.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"]
+    title: "JWT Factory",
+    description:
+      "A simple CLI tool to sign and decode JWT tokens, with optional support for templates.",
+    link: "https://github.com/larb26656/jwt-factory",
+    tags: ["Typescript", "Node.js", "Cli tool", "JWT"],
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["Vue.js", "Firebase", "WebSockets"]
+    title: "Env tag",
+    description:
+      "A simple Chrome extension that adds a visual indicator (tag) to specified websites, helping you distinguish between different environments like Production, Staging, and UAT.",
+    link: "https://github.com/larb26656/env-tag",
+    tags: ["Typescript", "Node.js", "Chrome extension", "React"],
   },
   {
-    title: "Social Media Dashboard",
-    description: "Analytics dashboard for social media metrics with data visualization and reporting tools.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    tags: ["React", "D3.js", "Express", "MongoDB"]
+    title: "Local share",
+    description:
+      "A Flutter-based cross-platform local file-sharing application designed to share files seamlessly over a local network without requiring a central server.",
+    link: "https://github.com/larb26656/local-share",
+    tags: ["Flutter", "Dart", "Server", "Webs socket"],
   },
   {
-    title: "Recipe Finder",
-    description: "Discover and save your favorite recipes with ingredient-based search and meal planning features.",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-    tags: ["Next.js", "TypeScript", "Spoonacular API"]
-  }
+    title: "DB evo reborn",
+    description:
+      "This project is a CLI tool designed to generate Liquibase change logs. It is a Node.js-based project that helps in managing and versioning database schema changes.",
+    link: "https://github.com/larb26656/db-evo-reborn",
+    tags: ["Node.js", "CLI tool", "Liquibase", "Database"],
+  },
 ];

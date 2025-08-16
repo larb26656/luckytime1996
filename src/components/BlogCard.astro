@@ -1,6 +1,7 @@
 ---
-import Typo from "./Typo.astro";
+import Typo from "./typo/Typo.astro";
 import Badge from "./Badge.astro";
+import { formatDate } from "../lib/utils/date";
 
 interface Props {
   title: string;
@@ -24,11 +25,7 @@ const {
   slug,
 } = Astro.props;
 
-const formattedDate = new Date(date).toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
+const formattedDate = formatDate(date);
 ---
 
 <article
@@ -45,11 +42,9 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
     )
   }
 
-  <div class="flex items-center text-xs text-gray-500 mb-2">
-    <span>{formattedDate}</span>
-    <span class="mx-2">•</span>
-    <span>{readTime}</span>
-  </div>
+  <Typo variant="tertiary" class="mb-2">
+    {formattedDate}
+  </Typo>
 
   <Typo variant="h3" color="primary" class="mb-2">
     <a href={`/blog/${slug}`} class="hover:underline">

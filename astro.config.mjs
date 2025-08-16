@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.luckytime1996.dev",
+  site: "https://wwww.luckytime1996.dev",
   integrations: [mdx(), sitemap(), icon(), react()],
   markdown: {
     remarkPlugins: [

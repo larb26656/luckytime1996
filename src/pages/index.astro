@@ -1,7 +1,5 @@
 ---
-import { getAllPosts } from "@/lib/repo/post.repo";
-import Typo from "@/components/Typo.astro";
-import { PAGE_SIZE } from "@/consts";
+import Typo from "@/components/typo/Typo.astro";
 import FreeStyleLayout from "@/layouts/FreeStyleLayout.astro";
 import NavigationBar from "@/components/navigation-bar/NavigationBar.astro";
 import Footer from "@/components/Footer.astro";
@@ -10,8 +8,9 @@ import TechStackTable from "@/components/TechStackTable.astro";
 import { techStacks } from "@/data/techStacks";
 import ProjectCard from "@/components/ProjectCard.astro";
 import { projects } from "@/data/projects";
-import { blogPosts } from "@/data/blogPosts";
-import BlogCard from "@/components/BlogCard.astro";
+import BlogPostsClient from "@/components/blog/BlogPosts.client";
+
+// Note: We've moved the blog posts fetching logic to the client component
 ---
 
 <FreeStyleLayout title="Home">
@@ -62,8 +61,8 @@ import BlogCard from "@/components/BlogCard.astro";
     <!-- Projects Section -->
     <div class="bg-white">
       <div class="main-container py-12 md:py-20 px-4">
-        <Typo variant="h2" color="primary" class="mb-8">Featured Projects</Typo>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <Typo variant="h2" color="primary" class="mb-8">Side projects</Typo>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project) => <ProjectCard {...project} />)}
         </div>
       </div>
@@ -73,9 +72,8 @@ import BlogCard from "@/components/BlogCard.astro";
     <div class="bg-gray-50">
       <div class="main-container py-12 md:py-20 px-4">
         <Typo variant="h2" color="primary" class="mb-8">Latest Articles</Typo>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          {blogPosts.map((post) => <BlogCard {...post} />)}
-        </div>
+        <!-- Client-side component will handle the loading and rendering -->
+        <BlogPostsClient client:load />
       </div>
     </div>
     <Footer />
