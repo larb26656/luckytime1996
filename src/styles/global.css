@@ -6,6 +6,10 @@
 @import "./markdown.css";
 @import "./container.css";
 
+:root {
+  --navbar-height: 64px;
+}
+
 @theme {
   --color-primary: #5f4644;
   --color-secondary: #161d2e;
