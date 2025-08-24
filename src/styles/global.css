@@ -24,3 +24,7 @@
   --font-primary: "IBM Plex Mono", "IBM Plex Sans Thai", sans-serif;
   --font-content: "Noto Sans Thai Looped", sans-serif;
 }
+
+.image-render-pixelated {
+  image-rendering: pixelated;
+}
